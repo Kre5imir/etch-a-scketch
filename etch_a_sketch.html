@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>example</title>
+            <style type="text/css">*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+#container {
+
+  background-color: #ccc;
+  padding: 5;
+  width: 400px;
+  height: 400px;
+  position: relative;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin:0;
+}
+
+body {
+	background-color: red;
+  text-align: center;
+}
+</style></head>
+
+<body>
+<h1>hello</h1>
+<div id="container"></div>
+<div id="display"></div>                                  
+<button id="btn">Restart</button>
+<script>
+	 var gridContainer = document.querySelector('#container');
+	 
+	let gridSize = prompt('how many square?', 32);
+	 function grid(a){
+	 
+	 	gridContainer.style.display = "inline-block";
+	for( let i = 0; i < a*a; i++){
+		var square = document.createElement('div');
+		square.className = 'grid-item';
+		square.style.width = 100/ a + "%";
+		square.style.height = 100/ a + "%";
+		square.style.display = 'float';
+		square.style.setProperty('float', 'left');
+		gridContainer.append(square);
+		square.addEventListener('mouseover', (e) => e.target.style.background = 'black'); 
+	};	
+	}	
+	grid(gridSize);
+	var btn = document.querySelector('#btn').addEventListener('click', btnClick);
+	function btnClick(){
+		
+		while (gridContainer.hasChildNodes()){
+			gridContainer.removeChild(gridContainer.firstChild);
+
+		} 
+	grid(64);
+	}
+	</script>
+</body>
+</html>
